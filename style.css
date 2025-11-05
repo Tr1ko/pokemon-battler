@@ -155,3 +155,31 @@ h1 {
   background-color: #2980b9;       /* Darker blue on hover */
   transform: scale(1.05);
 }
+
+@keyframes winner-zoom {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.winner {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff4757;
+  text-align: center;
+  /* Add the animation */
+  animation: winner-zoom 0.7s cubic-bezier(.22,1,.36,1) forwards;
+  /* Prevent the animation by default (see JS below!) */
+  opacity: 0;
+  transform: scale(0.3);
+}

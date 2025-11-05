@@ -70,7 +70,7 @@ function battle() {
     else winner = "It's a tie";
 
     // Print winner on page instead of alert
-    document.getElementById('winnerMessage').textContent = `Winner: ${winner.toUpperCase()}!`;
+    showWinner(`Winner: ${winner.toUpperCase()}!`);
 }
 
 function resetBattler() {
@@ -115,6 +115,20 @@ function getEffectiveness(attackerType, defenderType){
     }
 }
 
+function showWinner(winnerText) {
+  const winnerDiv = document.getElementById('winnerMessage');
+  winnerDiv.classList.remove('winner');
+  void winnerDiv.offsetWidth;
+  winnerDiv.textContent = winnerText;
+  winnerDiv.classList.add('winner');
+
+  // Fire confetti!
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}
 
 
 
