@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon battler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Pokémon Battle Simulator</h1>
+
+<div class="pokemon-container">
+  <div class="pokemon">
+    <input id="poke1" placeholder="Enter Pokémon 1" />
+    <button onclick="loadPokemon('poke1', 'pokemon1')">Load Pokémon 1</button>
+    <div id="pokemon1"></div>
+  </div>
+
+  <div class="pokemon">
+    <input id="poke2" placeholder="Enter Pokémon 2" />
+    <button onclick="loadPokemon('poke2', 'pokemon2')">Load Pokémon 2</button>
+    <div id="pokemon2"></div>
+  </div>
+</div>
+
+    <button id="battleButton" onclick="battle()">Battle!</button>
+    <script src="script.js"></script>
+</body>
+</html>
