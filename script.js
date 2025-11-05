@@ -20,6 +20,12 @@ async function loadPokemon(inputId, containerId) {
     const data = await getPokemon(name);
     const container = document.getElementById(containerId);
     const image = data.sprites.front_default || "https://via.placeholder.com/100?text=No+Image"
+    
+    if (containerId === "pokemon1") {
+        document.getElementById("hp-bar-container-1").style.display = 'block';
+    } else if (containerId === "pokemon2") {
+        document.getElementById("hp-bar-container-2").style.display = 'block';
+    }
     container.innerHTML = `
         <h2>${data.name}</h2>
         <img src="${image}" alt="${data.name}" />
@@ -50,19 +56,46 @@ function battle() {
 
     const finalAtk1 = atk1 * eff1;
     const finalAtk2 = atk2 * eff2;
-    
-    let winner, message1, message2;
 
     message1 = eff1 > 1 ? "Super effective!" : eff1 < 1 ? "Not very effective..." : "Normal attack";
     message2 = eff2 > 1 ? "Super effective!" : eff2 < 1 ? "Not very effective..." : "Normal attack";
 
-    winner = finalAtk1 > finalAtk2 ? poke1.name : poke2.name;
+    document.getElementById('msg1').textContent = `${poke1.name} attacks ${poke2.name}: ${message1}`;
+    document.getElementById('msg2').textContent = `${poke2.name} attacks ${poke1.name}: ${message2}`;
 
-    alert(`
-        ${poke1.name} attacks ${poke2.name}: ${message1}
-        ${poke2.name} attacks ${poke1.name}: ${message2}
-        Winner: ${winner.toUpperCase()}!
-    `);
+    // Determine winner
+    let winner;
+    if(finalAtk1 > finalAtk2) winner = poke1.name;
+    else if(finalAtk2 > finalAtk1) winner = poke2.name;
+    else winner = "It's a tie";
+
+    // Print winner on page instead of alert
+    document.getElementById('winnerMessage').textContent = `Winner: ${winner.toUpperCase()}!`;
+}
+
+function resetBattler() {
+    // Clear input fields
+    document.getElementById('poke1').value = "";
+    document.getElementById('poke2').value = "";
+
+    // Clear Pokémon display areas
+    document.getElementById('pokemon1').innerHTML = "";
+    document.getElementById('pokemon2').innerHTML = "";
+
+    // Clear message areas
+    document.getElementById('msg1').textContent = "";
+    document.getElementById('msg2').textContent = "";
+
+    // Hide HP bars
+    document.getElementById('hp-bar-container-1').style.display = 'none';
+    document.getElementById('hp-bar-container-2').style.display = 'none';
+
+    // Clear winner message
+    document.getElementById('winnerMessage').textContent = "";
+
+    // Remove loaded data from memory
+    window.pokemon1 = undefined;
+    window.pokemon2 = undefined;
 }
 
 const typeEffectiveness = {

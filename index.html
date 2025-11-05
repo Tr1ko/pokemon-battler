@@ -8,22 +8,31 @@
 </head>
 <body>
 <h1>Pokémon Battle Simulator</h1>
-
 <div class="pokemon-container">
-  <div class="pokemon">
-    <input id="poke1" placeholder="Enter Pokémon 1" />
-    <button onclick="loadPokemon('poke1', 'pokemon1')">Load Pokémon 1</button>
-    <div id="pokemon1"></div>
-  </div>
-
-  <div class="pokemon">
-    <input id="poke2" placeholder="Enter Pokémon 2" />
-    <button onclick="loadPokemon('poke2', 'pokemon2')">Load Pokémon 2</button>
-    <div id="pokemon2"></div>
+<div class="pokemon">
+  <input id="poke1" placeholder="Enter Pokémon 1" />
+  <button onclick="loadPokemon('poke1', 'pokemon1')">Load Pokémon 1</button>
+  <div id="pokemon1"></div>
+  <div class="attack-msg" id="msg1"></div>
+  <div class="hp-bar-container" id="hp-bar-container-1">
+    <div class="hp-bar" id="hp1"></div>
   </div>
 </div>
 
+<div class="pokemon">
+  <input id="poke2" placeholder="Enter Pokémon 2" />
+  <button onclick="loadPokemon('poke2', 'pokemon2')">Load Pokémon 2</button>
+  <div id="pokemon2"></div>
+  <div class="attack-msg" id="msg2"></div>
+  <div class="hp-bar-container" id="hp-bar-container-2">
+    <div class="hp-bar" id="hp2"></div>
+  </div>
+</div>
+</div>
+
     <button id="battleButton" onclick="battle()">Battle!</button>
+    <button id="resetButton" onclick="resetBattler()">Reset Battler</button>
+    <div id="winnerMessage" class="winner"></div>
     <script src="script.js"></script>
 </body>
 </html>
