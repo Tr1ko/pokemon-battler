@@ -28,7 +28,7 @@ async function loadPokemon(inputId, containerId) {
     }
     container.innerHTML = `
         <h2>${data.name}</h2>
-        <img src="${image}" alt="${data.name}" />
+        <img src="${image}" alt="${data.name}"/>
         <p>HP: ${data.stats[0].base_stat}</p>
         <p>Attack: ${data.stats[1].base_stat}</p>
         <p>Defense: ${data.stats[2].base_stat}</p>
@@ -124,8 +124,8 @@ function showWinner(winnerText) {
 
   // Fire confetti!
   confetti({
-    particleCount: 100,
-    spread: 70,
+    particleCount: 200,
+    spread: 150,
     origin: { y: 0.6 }
   });
 }
